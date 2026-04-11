@@ -1,0 +1,787 @@
+﻿<Window x:Class="HttpMonitor.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HttpMonitor"
+        mc:Ignorable="d"
+        Title="HTTP Monitor"
+        Height="900"
+        Width="1300"
+        WindowStyle="None"
+        AllowsTransparency="False"
+        Background="#F5F5F7"
+        ResizeMode="CanResizeWithGrip"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+
+	<WindowChrome.WindowChrome>
+		<WindowChrome CaptionHeight="44"
+                      GlassFrameThickness="0"
+                      CornerRadius="0"
+                      ResizeBorderThickness="4"
+                      UseAeroCaptionButtons="False"/>
+	</WindowChrome.WindowChrome>
+
+	<Window.Resources>
+		<!-- Цвета Apple -->
+		<SolidColorBrush x:Key="AppleBackground" Color="#F5F5F7"/>
+		<SolidColorBrush x:Key="AppleSurface" Color="#FFFFFF"/>
+		<SolidColorBrush x:Key="ApplePrimary" Color="#007AFF"/>
+		<SolidColorBrush x:Key="AppleSecondary" Color="#5856D6"/>
+		<SolidColorBrush x:Key="AppleSuccess" Color="#34C759"/>
+		<SolidColorBrush x:Key="AppleDanger" Color="#FF3B30"/>
+		<SolidColorBrush x:Key="AppleWarning" Color="#FF9500"/>
+		<SolidColorBrush x:Key="AppleText" Color="#1D1D1F"/>
+		<SolidColorBrush x:Key="AppleTextSecondary" Color="#86868B"/>
+		<SolidColorBrush x:Key="AppleBorder" Color="#D2D2D7"/>
+		<SolidColorBrush x:Key="AppleSeparator" Color="#E5E5EA"/>
+
+		<!-- Иконки для кнопок окна -->
+		<Canvas x:Key="MinimizeIcon" Width="14" Height="14" Clip="F1 M 0,0 L 14,0 L 14,14 L 0,14 Z">
+			<Path Data="M3,7 L11,7" Stroke="{StaticResource AppleTextSecondary}" StrokeThickness="1.5" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+		</Canvas>
+
+		<Canvas x:Key="MaximizeIcon" Width="14" Height="14" Clip="F1 M 0,0 L 14,0 L 14,14 L 0,14 Z">
+			<Path Data="M3.5,3.5 L10.5,3.5 L10.5,10.5 L3.5,10.5 Z" Stroke="{StaticResource AppleTextSecondary}" StrokeThickness="1.5" Fill="Transparent" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+		</Canvas>
+
+		<Canvas x:Key="RestoreIcon" Width="14" Height="14" Clip="F1 M 0,0 L 14,0 L 14,14 L 0,14 Z">
+			<Path Data="M3.5,5.5 L8.5,5.5 L8.5,10.5 L3.5,10.5 Z M5.5,3.5 L10.5,3.5 L10.5,8.5 L8.5,8.5 L8.5,5.5 L5.5,5.5 Z" Stroke="{StaticResource AppleTextSecondary}" StrokeThickness="1.5" Fill="Transparent" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+		</Canvas>
+
+		<Canvas x:Key="CloseIcon" Width="14" Height="14" Clip="F1 M 0,0 L 14,0 L 14,14 L 0,14 Z">
+			<Path Data="M4,4 L10,10 M10,4 L4,10" Stroke="{StaticResource AppleTextSecondary}" StrokeThickness="1.5" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
+		</Canvas>
+
+		<!-- Стиль для кнопок окна -->
+		<Style x:Key="WindowButtonStyle" TargetType="Button">
+			<Setter Property="Width" Value="48"/>
+			<Setter Property="Height" Value="44"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Cursor" Value="Hand"/>
+			<Setter Property="VerticalAlignment" Value="Stretch"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Border Background="{TemplateBinding Background}"
+                                CornerRadius="0"
+                                VerticalAlignment="Stretch">
+							<ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Background" Value="#E5E5EA"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+		<Style x:Key="CloseButtonStyle" TargetType="Button" BasedOn="{StaticResource WindowButtonStyle}">
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Background" Value="#FF3B30"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+		<!-- Стиль кнопки Apple -->
+		<Style x:Key="AppleButtonStyle" TargetType="Button">
+			<Setter Property="Background" Value="{StaticResource ApplePrimary}"/>
+			<Setter Property="Foreground" Value="White"/>
+			<Setter Property="Padding" Value="16,8"/>
+			<Setter Property="Margin" Value="0"/>
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="FontWeight" Value="Medium"/>
+			<Setter Property="FontFamily" Value="Segoe UI"/>
+			<Setter Property="Cursor" Value="Hand"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Border Background="{TemplateBinding Background}"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+							<ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Background" Value="#0051D5"/>
+				</Trigger>
+				<Trigger Property="IsPressed" Value="True">
+					<Setter Property="Background" Value="#0040A8"/>
+				</Trigger>
+				<Trigger Property="IsEnabled" Value="False">
+					<Setter Property="Background" Value="#9999A5"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+		<!-- Стиль вторичной кнопки Apple -->
+		<Style x:Key="AppleSecondaryButtonStyle" TargetType="Button">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Foreground" Value="{StaticResource ApplePrimary}"/>
+			<Setter Property="BorderBrush" Value="{StaticResource AppleBorder}"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Padding" Value="16,8"/>
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="FontWeight" Value="Medium"/>
+			<Setter Property="Cursor" Value="Hand"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="Button">
+						<Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="1"
+                                CornerRadius="8"
+                                Padding="{TemplateBinding Padding}">
+							<ContentPresenter HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsMouseOver" Value="True">
+					<Setter Property="Background" Value="#F5F5F7"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+		<!-- Стиль TextBox Apple -->
+		<Style x:Key="AppleTextBoxStyle" TargetType="TextBox">
+			<Setter Property="Background" Value="White"/>
+			<Setter Property="BorderBrush" Value="{StaticResource AppleBorder}"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Padding" Value="12,10"/>
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="FontFamily" Value="Segoe UI"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="TextBox">
+						<Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8">
+							<ScrollViewer x:Name="PART_ContentHost"
+                                          Margin="{TemplateBinding Padding}"
+                                          VerticalAlignment="Center"/>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsFocused" Value="True">
+					<Setter Property="BorderBrush" Value="{StaticResource ApplePrimary}"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+		<!-- Стиль ComboBox Apple -->
+		<Style x:Key="AppleComboBoxStyle" TargetType="ComboBox">
+			<Setter Property="Background" Value="White"/>
+			<Setter Property="BorderBrush" Value="{StaticResource AppleBorder}"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="Padding" Value="12,10"/>
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="FontFamily" Value="Segoe UI"/>
+			<Setter Property="Foreground" Value="{StaticResource AppleText}"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="ComboBox">
+						<Border Background="{TemplateBinding Background}"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                CornerRadius="8">
+							<Grid>
+								<ToggleButton x:Name="ToggleButton"
+                                              Focusable="False"
+                                              IsChecked="{Binding IsDropDownOpen, Mode=TwoWay, RelativeSource={RelativeSource TemplatedParent}}"
+                                              ClickMode="Press"
+                                              Background="Transparent"
+                                              BorderThickness="0">
+									<ToggleButton.Template>
+										<ControlTemplate TargetType="ToggleButton">
+											<Grid Background="Transparent">
+												<Grid.ColumnDefinitions>
+													<ColumnDefinition/>
+													<ColumnDefinition Width="30"/>
+												</Grid.ColumnDefinitions>
+												<ContentPresenter Grid.Column="0"
+                                                                  Margin="12,10,0,10"
+                                                                  HorizontalAlignment="Left"
+                                                                  VerticalAlignment="Center"
+                                                                  RecognizesAccessKey="True"/>
+												<Path Grid.Column="1"
+                                                      Data="M0,0 L4,4 L8,0"
+                                                      Fill="{StaticResource AppleTextSecondary}"
+                                                      HorizontalAlignment="Center"
+                                                      VerticalAlignment="Center"
+                                                      StrokeThickness="1"/>
+											</Grid>
+										</ControlTemplate>
+									</ToggleButton.Template>
+								</ToggleButton>
+								<ContentPresenter x:Name="ContentSite"
+                                                  Margin="12,10,30,10"
+                                                  VerticalAlignment="Center"
+                                                  HorizontalAlignment="Left"
+                                                  IsHitTestVisible="False"
+                                                  Content="{TemplateBinding SelectionBoxItem}"
+                                                  ContentTemplate="{TemplateBinding SelectionBoxItemTemplate}"
+                                                  ContentTemplateSelector="{TemplateBinding ItemTemplateSelector}"
+                                                  ContentStringFormat="{TemplateBinding SelectionBoxItemStringFormat}"/>
+								<Popup x:Name="Popup"
+                                       Placement="Bottom"
+                                       IsOpen="{TemplateBinding IsDropDownOpen}"
+                                       AllowsTransparency="True"
+                                       Focusable="False"
+                                       PopupAnimation="Slide">
+									<Border x:Name="DropDownBorder"
+                                            Background="White"
+                                            BorderBrush="{StaticResource AppleBorder}"
+                                            BorderThickness="1"
+                                            CornerRadius="8"
+                                            Margin="0,4,0,0">
+										<ScrollViewer>
+											<ItemsPresenter/>
+										</ScrollViewer>
+									</Border>
+								</Popup>
+							</Grid>
+						</Border>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+			<Style.Triggers>
+				<Trigger Property="IsFocused" Value="True">
+					<Setter Property="BorderBrush" Value="{StaticResource ApplePrimary}"/>
+				</Trigger>
+			</Style.Triggers>
+		</Style>
+
+		<!-- Стиль TabControl Apple -->
+		<Style TargetType="TabControl">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Padding" Value="0"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="TabControl">
+						<Grid>
+							<Grid.RowDefinitions>
+								<RowDefinition Height="Auto"/>
+								<RowDefinition Height="*"/>
+							</Grid.RowDefinitions>
+							<StackPanel Grid.Row="0"
+                                        Orientation="Horizontal"
+                                        HorizontalAlignment="Center"
+                                        Margin="0,0,0,16">
+								<TabPanel x:Name="HeaderPanel"
+                                          IsItemsHost="True"
+                                          Background="Transparent"/>
+							</StackPanel>
+							<Border Grid.Row="1"
+                                    Background="{StaticResource AppleSurface}"
+                                    CornerRadius="12"
+                                    Padding="24">
+								<ContentPresenter ContentSource="SelectedContent"/>
+							</Border>
+						</Grid>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<!-- Стиль TabItem Apple -->
+		<Style TargetType="TabItem">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Foreground" Value="{StaticResource AppleTextSecondary}"/>
+			<Setter Property="FontSize" Value="14"/>
+			<Setter Property="FontWeight" Value="Medium"/>
+			<Setter Property="FontFamily" Value="Segoe UI"/>
+			<Setter Property="Padding" Value="24,12"/>
+			<Setter Property="Margin" Value="4,0"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Cursor" Value="Hand"/>
+			<Setter Property="HorizontalAlignment" Value="Center"/>
+			<Setter Property="VerticalAlignment" Value="Center"/>
+			<Setter Property="Template">
+				<Setter.Value>
+					<ControlTemplate TargetType="TabItem">
+						<Border x:Name="Border"
+                                Background="{TemplateBinding Background}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Padding="{TemplateBinding Padding}"
+                                CornerRadius="8">
+							<ContentPresenter x:Name="Content"
+                                              HorizontalAlignment="Center"
+                                              VerticalAlignment="Center"
+                                              ContentSource="Header"/>
+						</Border>
+						<ControlTemplate.Triggers>
+							<Trigger Property="IsSelected" Value="True">
+								<Setter TargetName="Border" Property="Background" Value="{StaticResource AppleSurface}"/>
+								<Setter Property="Foreground" Value="{StaticResource ApplePrimary}"/>
+							</Trigger>
+							<Trigger Property="IsMouseOver" Value="True">
+								<Setter TargetName="Border" Property="Background" Value="#F0F0F3"/>
+								<Setter Property="Foreground" Value="{StaticResource AppleText}"/>
+							</Trigger>
+						</ControlTemplate.Triggers>
+					</ControlTemplate>
+				</Setter.Value>
+			</Setter>
+		</Style>
+
+		<!-- Стиль ListBox Apple -->
+		<Style TargetType="ListBox">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="FontFamily" Value="Consolas, monospace"/>
+			<Setter Property="FontSize" Value="12"/>
+		</Style>
+
+		<Style TargetType="ScrollViewer">
+			<Setter Property="Background" Value="Transparent"/>
+		</Style>
+
+		<Style TargetType="TextBlock">
+			<Setter Property="FontFamily" Value="Segoe UI"/>
+			<Setter Property="Foreground" Value="{StaticResource AppleText}"/>
+		</Style>
+
+		<Style TargetType="StatusBar">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="Foreground" Value="{StaticResource AppleTextSecondary}"/>
+			<Setter Property="FontSize" Value="12"/>
+		</Style>
+	</Window.Resources>
+
+	<Grid Margin="20">
+		<Grid.RowDefinitions>
+			<RowDefinition Height="Auto"/>
+			<RowDefinition Height="*"/>
+			<RowDefinition Height="Auto"/>
+		</Grid.RowDefinitions>
+
+		<!-- Заголовок окна -->
+		<Border Grid.Row="0" Height="44" Margin="0,0,0,8" Background="Transparent">
+			<Grid>
+				<TextBlock Text="HTTP Monitor"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           Foreground="{StaticResource AppleText}"
+                           VerticalAlignment="Center"
+                           HorizontalAlignment="Center"/>
+
+				<!-- Кнопки управления окном -->
+				<StackPanel Orientation="Horizontal"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Stretch">
+					<Button x:Name="MinimizeButton"
+                            Style="{StaticResource WindowButtonStyle}"
+                            Click="MinimizeButton_Click"
+                            ToolTip="Свернуть">
+						<ContentControl Content="{StaticResource MinimizeIcon}"/>
+					</Button>
+					<Button x:Name="MaximizeButton"
+                            Style="{StaticResource WindowButtonStyle}"
+                            Click="MaximizeButton_Click"
+                            ToolTip="Развернуть">
+						<ContentControl x:Name="MaximizeIcon" Content="{StaticResource MaximizeIcon}"/>
+					</Button>
+					<Button x:Name="CloseButton"
+                            Style="{StaticResource CloseButtonStyle}"
+                            Click="CloseButton_Click"
+                            ToolTip="Закрыть">
+						<ContentControl Content="{StaticResource CloseIcon}"/>
+					</Button>
+				</StackPanel>
+			</Grid>
+		</Border>
+
+		<!-- Основной контент -->
+		<TabControl Grid.Row="1">
+			<!-- Вкладка Сервер -->
+			<TabItem Header="Сервер">
+				<ScrollViewer VerticalScrollBarVisibility="Auto">
+					<StackPanel>
+						<!-- Настройки сервера -->
+						<Border BorderBrush="{StaticResource AppleSeparator}"
+                                BorderThickness="0,0,0,1"
+                                Padding="0,0,0,20"
+                                Margin="0,0,0,20">
+							<StackPanel>
+								<TextBlock Text="Настройки сервера"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,16"/>
+								<Grid>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="Auto"/>
+										<ColumnDefinition Width="160"/>
+										<ColumnDefinition Width="Auto"/>
+										<ColumnDefinition Width="*"/>
+									</Grid.ColumnDefinitions>
+
+									<TextBlock Text="Порт"
+                                               Grid.Column="0"
+                                               VerticalAlignment="Center"
+                                               Margin="0,0,16,0"
+                                               FontWeight="Medium"/>
+									<TextBox x:Name="PortTextBox"
+                                             Grid.Column="1"
+                                             Text="8080"
+                                             Style="{StaticResource AppleTextBoxStyle}"/>
+									<Button x:Name="StartServerButton"
+                                            Grid.Column="2"
+                                            Content="Запустить"
+                                            Style="{StaticResource AppleButtonStyle}"
+                                            Click="StartServerButton_Click"
+                                            Margin="16,0,0,0"/>
+								</Grid>
+							</StackPanel>
+						</Border>
+
+						<!-- Статистика -->
+						<Border BorderBrush="{StaticResource AppleSeparator}"
+                                BorderThickness="0,0,0,1"
+                                Padding="0,0,0,20"
+                                Margin="0,0,0,20">
+							<StackPanel>
+								<TextBlock Text="Статистика"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,16"/>
+
+								<Grid>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="*"/>
+									</Grid.ColumnDefinitions>
+
+									<!-- GET -->
+									<Border Grid.Column="0"
+                                            Background="#F8F8FA"
+                                            CornerRadius="12"
+                                            Padding="16"
+                                            Margin="0,0,8,0">
+										<StackPanel>
+											<TextBlock Text="GET"
+                                                       Foreground="{StaticResource AppleSuccess}"
+                                                       FontWeight="SemiBold"
+                                                       FontSize="14"/>
+											<TextBlock x:Name="GetRequestsText"
+                                                       Text="0"
+                                                       FontSize="36"
+                                                       FontWeight="Light"
+                                                       Margin="0,4,0,0"/>
+											<TextBlock Text="запросов"
+                                                       Foreground="{StaticResource AppleTextSecondary}"
+                                                       FontSize="13"/>
+										</StackPanel>
+									</Border>
+
+									<!-- POST -->
+									<Border Grid.Column="1"
+                                            Background="#F8F8FA"
+                                            CornerRadius="12"
+                                            Padding="16"
+                                            Margin="4,0,4,0">
+										<StackPanel>
+											<TextBlock Text="POST"
+                                                       Foreground="{StaticResource ApplePrimary}"
+                                                       FontWeight="SemiBold"
+                                                       FontSize="14"/>
+											<TextBlock x:Name="PostRequestsText"
+                                                       Text="0"
+                                                       FontSize="36"
+                                                       FontWeight="Light"
+                                                       Margin="0,4,0,0"/>
+											<TextBlock Text="запросов"
+                                                       Foreground="{StaticResource AppleTextSecondary}"
+                                                       FontSize="13"/>
+										</StackPanel>
+									</Border>
+
+									<!-- Всего -->
+									<Border Grid.Column="2"
+                                            Background="#F8F8FA"
+                                            CornerRadius="12"
+                                            Padding="16"
+                                            Margin="8,0,0,0">
+										<StackPanel>
+											<TextBlock Text="Всего"
+                                                       Foreground="{StaticResource AppleSecondary}"
+                                                       FontWeight="SemiBold"
+                                                       FontSize="14"/>
+											<TextBlock x:Name="TotalRequestsText"
+                                                       Text="0"
+                                                       FontSize="36"
+                                                       FontWeight="Light"
+                                                       Margin="0,4,0,0"/>
+											<TextBlock Text="запросов"
+                                                       Foreground="{StaticResource AppleTextSecondary}"
+                                                       FontSize="13"/>
+										</StackPanel>
+									</Border>
+								</Grid>
+
+								<!-- Метрики -->
+								<Grid Margin="0,20,0,0">
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="*"/>
+									</Grid.ColumnDefinitions>
+
+									<Border Grid.Column="0"
+                                            Background="#F8F8FA"
+                                            CornerRadius="12"
+                                            Padding="16"
+                                            Margin="0,0,8,0">
+										<StackPanel>
+											<TextBlock Text="Среднее время ответа"
+                                                       Foreground="{StaticResource AppleTextSecondary}"
+                                                       FontSize="13"/>
+											<TextBlock x:Name="AvgTimeText"
+                                                       Text="0 мс"
+                                                       FontSize="24"
+                                                       FontWeight="Medium"
+                                                       Margin="0,4,0,0"/>
+										</StackPanel>
+									</Border>
+
+									<Border Grid.Column="1"
+                                            Background="#F8F8FA"
+                                            CornerRadius="12"
+                                            Padding="16"
+                                            Margin="8,0,0,0">
+										<StackPanel>
+											<TextBlock Text="Время работы"
+                                                       Foreground="{StaticResource AppleTextSecondary}"
+                                                       FontSize="13"/>
+											<TextBlock x:Name="UptimeText"
+                                                       Text="00:00:00"
+                                                       FontSize="24"
+                                                       FontWeight="Medium"
+                                                       Margin="0,4,0,0"/>
+										</StackPanel>
+									</Border>
+								</Grid>
+							</StackPanel>
+						</Border>
+
+						<!-- Логи -->
+						<StackPanel>
+							<Grid Margin="0,0,0,16">
+								<Grid.ColumnDefinitions>
+									<ColumnDefinition Width="Auto"/>
+									<ColumnDefinition Width="Auto"/>
+									<ColumnDefinition Width="*"/>
+									<ColumnDefinition Width="Auto"/>
+								</Grid.ColumnDefinitions>
+
+								<TextBlock Text="Логи"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Grid.Column="0"/>
+
+								<ComboBox x:Name="FilterComboBox"
+                                          Grid.Column="1"
+                                          Width="120"
+                                          Margin="24,0,16,0"
+                                          Style="{StaticResource AppleComboBoxStyle}"
+                                          SelectionChanged="ApplyFilterButton_Click">
+									<ComboBoxItem Content="Все" IsSelected="True"/>
+									<ComboBoxItem Content="GET"/>
+									<ComboBoxItem Content="POST"/>
+									<ComboBoxItem Content="PUT"/>
+									<ComboBoxItem Content="DELETE"/>
+								</ComboBox>
+
+								<Button x:Name="ClearLogsButton"
+                                        Grid.Column="3"
+                                        Content="Очистить"
+                                        Style="{StaticResource AppleSecondaryButtonStyle}"
+                                        Click="ClearLogsButton_Click"/>
+							</Grid>
+
+							<Border Background="#F8F8FA"
+                                    CornerRadius="12"
+                                    Padding="4">
+								<ScrollViewer Height="200"
+                                              VerticalScrollBarVisibility="Auto">
+									<ListBox x:Name="LogListBox"
+                                             Background="Transparent"
+                                             BorderThickness="0">
+										<ListBox.ItemContainerStyle>
+											<Style TargetType="ListBoxItem">
+												<Setter Property="Padding" Value="12,8"/>
+												<Setter Property="BorderThickness" Value="0,0,0,1"/>
+												<Setter Property="BorderBrush" Value="{StaticResource AppleSeparator}"/>
+												<Setter Property="Template">
+													<Setter.Value>
+														<ControlTemplate TargetType="ListBoxItem">
+															<Border Background="{TemplateBinding Background}"
+                                                                    BorderBrush="{TemplateBinding BorderBrush}"
+                                                                    BorderThickness="{TemplateBinding BorderThickness}"
+                                                                    Padding="{TemplateBinding Padding}">
+																<ContentPresenter/>
+															</Border>
+														</ControlTemplate>
+													</Setter.Value>
+												</Setter>
+												<Style.Triggers>
+													<Trigger Property="IsMouseOver" Value="True">
+														<Setter Property="Background" Value="White"/>
+													</Trigger>
+												</Style.Triggers>
+											</Style>
+										</ListBox.ItemContainerStyle>
+									</ListBox>
+								</ScrollViewer>
+							</Border>
+						</StackPanel>
+					</StackPanel>
+				</ScrollViewer>
+			</TabItem>
+
+			<!-- Вкладка Клиент -->
+			<TabItem Header="Клиент">
+				<ScrollViewer VerticalScrollBarVisibility="Auto">
+					<StackPanel>
+						<Border BorderBrush="{StaticResource AppleSeparator}"
+                                BorderThickness="0,0,0,1"
+                                Padding="0,0,0,20"
+                                Margin="0,0,0,20">
+							<StackPanel>
+								<TextBlock Text="Настройки клиента"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,16"/>
+
+								<StackPanel>
+									<!-- URL -->
+									<TextBlock Text="URL"
+                                               FontWeight="Medium"
+                                               Margin="0,0,0,8"/>
+									<TextBox x:Name="UrlTextBox"
+                                             Text="http://localhost:8080/"
+                                             Style="{StaticResource AppleTextBoxStyle}"
+                                             Margin="0,0,0,16"/>
+
+									<!-- Метод -->
+									<Grid Margin="0,0,0,16">
+										<Grid.ColumnDefinitions>
+											<ColumnDefinition Width="Auto"/>
+											<ColumnDefinition Width="200"/>
+											<ColumnDefinition Width="*"/>
+										</Grid.ColumnDefinitions>
+
+										<TextBlock Text="Метод"
+                                                   Grid.Column="0"
+                                                   VerticalAlignment="Center"
+                                                   FontWeight="Medium"
+                                                   Margin="0,0,16,0"/>
+										<ComboBox x:Name="MethodComboBox"
+                                                  Grid.Column="1"
+                                                  Style="{StaticResource AppleComboBoxStyle}">
+											<ComboBoxItem Content="GET" IsSelected="True"/>
+											<ComboBoxItem Content="POST"/>
+											<ComboBoxItem Content="PUT"/>
+											<ComboBoxItem Content="DELETE"/>
+										</ComboBox>
+									</Grid>
+
+									<!-- Тело запроса -->
+									<TextBlock Text="Тело запроса (JSON)"
+                                               FontWeight="Medium"
+                                               Margin="0,0,0,8"/>
+									<TextBox x:Name="RequestBodyTextBox"
+                                             Text="{}{ &quot;message&quot;: &quot;тест&quot; }"
+                                             Height="120"
+                                             TextWrapping="Wrap"
+                                             AcceptsReturn="True"
+                                             Style="{StaticResource AppleTextBoxStyle}"
+                                             Margin="0,0,0,16"/>
+
+									<!-- Быстрые примеры -->
+									<WrapPanel Margin="0,0,0,20">
+										<Button Content="/stats"
+                                                Style="{StaticResource AppleSecondaryButtonStyle}"
+                                                Click="ExampleStats_Click"
+                                                Margin="0,0,8,8"/>
+										<Button Content="GET /posts/1"
+                                                Style="{StaticResource AppleSecondaryButtonStyle}"
+                                                Click="ExampleExternalApi_Click"
+                                                Margin="0,0,8,8"/>
+										<Button Content="POST test"
+                                                Style="{StaticResource AppleSecondaryButtonStyle}"
+                                                Click="ExamplePost_Click"
+                                                Margin="0,0,8,8"/>
+										<Button Content="PUT test"
+                                                Style="{StaticResource AppleSecondaryButtonStyle}"
+                                                Click="ExamplePut_Click"
+                                                Margin="0,0,8,8"/>
+										<Button Content="DELETE test"
+                                                Style="{StaticResource AppleSecondaryButtonStyle}"
+                                                Click="ExampleDelete_Click"
+                                                Margin="0,0,8,8"/>
+									</WrapPanel>
+
+									<!-- Кнопка отправки -->
+									<Button x:Name="SendRequestButton"
+                                            Content="Отправить запрос"
+                                            Style="{StaticResource AppleButtonStyle}"
+                                            Click="SendRequestButton_Click"
+                                            Width="180"/>
+								</StackPanel>
+							</StackPanel>
+						</Border>
+
+						<!-- Ответ -->
+						<StackPanel>
+							<TextBlock Text="Ответ сервера"
+                                       FontSize="20"
+                                       FontWeight="SemiBold"
+                                       Margin="0,0,0,16"/>
+
+							<Border Background="#F8F8FA"
+                                    CornerRadius="12"
+                                    Padding="4">
+								<ScrollViewer Height="250"
+                                              VerticalScrollBarVisibility="Auto">
+									<TextBox x:Name="ResponseTextBox"
+                                             IsReadOnly="True"
+                                             TextWrapping="Wrap"
+                                             FontFamily="Consolas, monospace"
+                                             FontSize="13"
+                                             Background="Transparent"
+                                             BorderThickness="0"
+                                             Padding="16"
+                                             AcceptsReturn="True"/>
+								</ScrollViewer>
+							</Border>
+						</StackPanel>
+					</StackPanel>
+				</ScrollViewer>
+			</TabItem>
+		</TabControl>
+
+		<!-- Статусная строка -->
+		<StatusBar Grid.Row="2" Margin="0,16,0,0">
+			<StatusBarItem>
+				<TextBlock x:Name="StatusBarText" Text="Готов к работе"/>
+			</StatusBarItem>
+		</StatusBar>
+	</Grid>
+</Window>
