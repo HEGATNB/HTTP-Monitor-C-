@@ -23,7 +23,6 @@
 	</WindowChrome.WindowChrome>
 
 	<Window.Resources>
-		<!-- Цвета Apple -->
 		<SolidColorBrush x:Key="AppleBackground" Color="#F5F5F7"/>
 		<SolidColorBrush x:Key="AppleSurface" Color="#FFFFFF"/>
 		<SolidColorBrush x:Key="ApplePrimary" Color="#007AFF"/>
@@ -35,8 +34,6 @@
 		<SolidColorBrush x:Key="AppleTextSecondary" Color="#86868B"/>
 		<SolidColorBrush x:Key="AppleBorder" Color="#D2D2D7"/>
 		<SolidColorBrush x:Key="AppleSeparator" Color="#E5E5EA"/>
-
-		<!-- Иконки для кнопок окна -->
 		<Canvas x:Key="MinimizeIcon" Width="14" Height="14" Clip="F1 M 0,0 L 14,0 L 14,14 L 0,14 Z">
 			<Path Data="M3,7 L11,7" Stroke="{StaticResource AppleTextSecondary}" StrokeThickness="1.5" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
 		</Canvas>
@@ -52,8 +49,6 @@
 		<Canvas x:Key="CloseIcon" Width="14" Height="14" Clip="F1 M 0,0 L 14,0 L 14,14 L 0,14 Z">
 			<Path Data="M4,4 L10,10 M10,4 L4,10" Stroke="{StaticResource AppleTextSecondary}" StrokeThickness="1.5" StrokeStartLineCap="Round" StrokeEndLineCap="Round"/>
 		</Canvas>
-
-		<!-- Стиль для кнопок окна -->
 		<Style x:Key="WindowButtonStyle" TargetType="Button">
 			<Setter Property="Width" Value="48"/>
 			<Setter Property="Height" Value="44"/>
@@ -87,8 +82,6 @@
 				</Trigger>
 			</Style.Triggers>
 		</Style>
-
-		<!-- Стиль кнопки Apple -->
 		<Style x:Key="AppleButtonStyle" TargetType="Button">
 			<Setter Property="Background" Value="{StaticResource ApplePrimary}"/>
 			<Setter Property="Foreground" Value="White"/>
@@ -123,8 +116,6 @@
 				</Trigger>
 			</Style.Triggers>
 		</Style>
-
-		<!-- Стиль вторичной кнопки Apple -->
 		<Style x:Key="AppleSecondaryButtonStyle" TargetType="Button">
 			<Setter Property="Background" Value="Transparent"/>
 			<Setter Property="Foreground" Value="{StaticResource ApplePrimary}"/>
@@ -154,8 +145,6 @@
 				</Trigger>
 			</Style.Triggers>
 		</Style>
-
-		<!-- Стиль TextBox Apple -->
 		<Style x:Key="AppleTextBoxStyle" TargetType="TextBox">
 			<Setter Property="Background" Value="White"/>
 			<Setter Property="BorderBrush" Value="{StaticResource AppleBorder}"/>
@@ -183,8 +172,6 @@
 				</Trigger>
 			</Style.Triggers>
 		</Style>
-
-		<!-- Стиль ComboBox Apple -->
 		<Style x:Key="AppleComboBoxStyle" TargetType="ComboBox">
 			<Setter Property="Background" Value="White"/>
 			<Setter Property="BorderBrush" Value="{StaticResource AppleBorder}"/>
@@ -266,8 +253,6 @@
 				</Trigger>
 			</Style.Triggers>
 		</Style>
-
-		<!-- Стиль TabControl Apple -->
 		<Style TargetType="TabControl">
 			<Setter Property="Background" Value="Transparent"/>
 			<Setter Property="BorderThickness" Value="0"/>
@@ -299,8 +284,6 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
-
-		<!-- Стиль TabItem Apple -->
 		<Style TargetType="TabItem">
 			<Setter Property="Background" Value="Transparent"/>
 			<Setter Property="Foreground" Value="{StaticResource AppleTextSecondary}"/>
@@ -340,13 +323,39 @@
 				</Setter.Value>
 			</Setter>
 		</Style>
-
-		<!-- Стиль ListBox Apple -->
 		<Style TargetType="ListBox">
 			<Setter Property="Background" Value="Transparent"/>
 			<Setter Property="BorderThickness" Value="0"/>
 			<Setter Property="FontFamily" Value="Consolas, monospace"/>
 			<Setter Property="FontSize" Value="12"/>
+		</Style>
+		<Style TargetType="DataGrid">
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="RowBackground" Value="Transparent"/>
+			<Setter Property="AlternatingRowBackground" Value="#F8F8FA"/>
+			<Setter Property="HeadersVisibility" Value="Column"/>
+			<Setter Property="GridLinesVisibility" Value="Horizontal"/>
+			<Setter Property="HorizontalGridLinesBrush" Value="{StaticResource AppleSeparator}"/>
+			<Setter Property="VerticalGridLinesBrush" Value="Transparent"/>
+			<Setter Property="BorderBrush" Value="Transparent"/>
+		</Style>
+
+		<Style TargetType="DataGridColumnHeader">
+			<Setter Property="Background" Value="#F8F8FA"/>
+			<Setter Property="Foreground" Value="{StaticResource AppleText}"/>
+			<Setter Property="FontWeight" Value="SemiBold"/>
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="Padding" Value="12,10"/>
+			<Setter Property="BorderThickness" Value="0,0,0,1"/>
+			<Setter Property="BorderBrush" Value="{StaticResource AppleSeparator}"/>
+		</Style>
+
+		<Style TargetType="DataGridCell">
+			<Setter Property="Padding" Value="12,10"/>
+			<Setter Property="FontSize" Value="13"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="FocusVisualStyle" Value="{x:Null}"/>
 		</Style>
 
 		<Style TargetType="ScrollViewer">
@@ -371,8 +380,6 @@
 			<RowDefinition Height="*"/>
 			<RowDefinition Height="Auto"/>
 		</Grid.RowDefinitions>
-
-		<!-- Заголовок окна -->
 		<Border Grid.Row="0" Height="44" Margin="0,0,0,8" Background="Transparent">
 			<Grid>
 				<TextBlock Text="HTTP Monitor"
@@ -381,8 +388,6 @@
                            Foreground="{StaticResource AppleText}"
                            VerticalAlignment="Center"
                            HorizontalAlignment="Center"/>
-
-				<!-- Кнопки управления окном -->
 				<StackPanel Orientation="Horizontal"
                             HorizontalAlignment="Right"
                             VerticalAlignment="Stretch">
@@ -407,14 +412,10 @@
 				</StackPanel>
 			</Grid>
 		</Border>
-
-		<!-- Основной контент -->
 		<TabControl Grid.Row="1">
-			<!-- Вкладка Сервер -->
 			<TabItem Header="Сервер">
 				<ScrollViewer VerticalScrollBarVisibility="Auto">
 					<StackPanel>
-						<!-- Настройки сервера -->
 						<Border BorderBrush="{StaticResource AppleSeparator}"
                                 BorderThickness="0,0,0,1"
                                 Padding="0,0,0,20"
@@ -450,17 +451,27 @@
 								</Grid>
 							</StackPanel>
 						</Border>
-
-						<!-- Статистика -->
 						<Border BorderBrush="{StaticResource AppleSeparator}"
                                 BorderThickness="0,0,0,1"
                                 Padding="0,0,0,20"
                                 Margin="0,0,0,20">
 							<StackPanel>
-								<TextBlock Text="Статистика"
-                                           FontSize="20"
-                                           FontWeight="SemiBold"
-                                           Margin="0,0,0,16"/>
+								<Grid>
+									<Grid.ColumnDefinitions>
+										<ColumnDefinition Width="*"/>
+										<ColumnDefinition Width="Auto"/>
+									</Grid.ColumnDefinitions>
+									<TextBlock Text="Статистика"
+                                               FontSize="20"
+                                               FontWeight="SemiBold"
+                                               Margin="0,0,0,16"/>
+									<Button x:Name="ExportLogsButton"
+                                            Grid.Column="1"
+                                            Content="📄 Экспорт логов"
+                                            Style="{StaticResource AppleSecondaryButtonStyle}"
+                                            Click="ExportLogsButton_Click"
+                                            VerticalAlignment="Center"/>
+								</Grid>
 
 								<Grid>
 									<Grid.ColumnDefinitions>
@@ -468,8 +479,6 @@
 										<ColumnDefinition Width="*"/>
 										<ColumnDefinition Width="*"/>
 									</Grid.ColumnDefinitions>
-
-									<!-- GET -->
 									<Border Grid.Column="0"
                                             Background="#F8F8FA"
                                             CornerRadius="12"
@@ -491,7 +500,6 @@
 										</StackPanel>
 									</Border>
 
-									<!-- POST -->
 									<Border Grid.Column="1"
                                             Background="#F8F8FA"
                                             CornerRadius="12"
@@ -512,8 +520,6 @@
                                                        FontSize="13"/>
 										</StackPanel>
 									</Border>
-
-									<!-- Всего -->
 									<Border Grid.Column="2"
                                             Background="#F8F8FA"
                                             CornerRadius="12"
@@ -535,8 +541,6 @@
 										</StackPanel>
 									</Border>
 								</Grid>
-
-								<!-- Метрики -->
 								<Grid Margin="0,20,0,0">
 									<Grid.ColumnDefinitions>
 										<ColumnDefinition Width="*"/>
@@ -580,7 +584,91 @@
 							</StackPanel>
 						</Border>
 
-						<!-- Логи -->
+						<Border BorderBrush="{StaticResource AppleSeparator}"
+                                BorderThickness="0,0,0,1"
+                                Padding="0,0,0,20"
+                                Margin="0,0,0,20">
+							<StackPanel>
+								<TextBlock Text="График нагрузки (запросов/мин)"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,16"/>
+								<Border Background="#F8F8FA"
+                                        CornerRadius="12"
+                                        Padding="16,16,16,30"
+                                        Height="250">
+									<Grid>
+										<Grid.RowDefinitions>
+											<RowDefinition Height="*"/>
+											<RowDefinition Height="Auto"/>
+										</Grid.RowDefinitions>
+
+										<ItemsControl x:Name="LoadChartItems" Grid.Row="0">
+											<ItemsControl.ItemsPanel>
+												<ItemsPanelTemplate>
+													<StackPanel Orientation="Horizontal"/>
+												</ItemsPanelTemplate>
+											</ItemsControl.ItemsPanel>
+											<ItemsControl.ItemTemplate>
+												<DataTemplate>
+													<Border Margin="2,0" VerticalAlignment="Bottom">
+														<Grid>
+															<Grid.RowDefinitions>
+																<RowDefinition Height="Auto"/>
+																<RowDefinition Height="*"/>
+															</Grid.RowDefinitions>
+
+															<Rectangle Grid.Row="1"
+                                                                       Fill="{StaticResource ApplePrimary}"
+                                                                       Width="10"
+                                                                       Height="{Binding Height}"
+                                                                       MinHeight="2"
+                                                                       RadiusX="3"
+                                                                       RadiusY="3"
+                                                                       VerticalAlignment="Bottom"
+                                                                       ToolTip="{Binding RequestCount}"/>
+
+															<TextBlock Grid.Row="0"
+                                                                       Text="{Binding Time}"
+                                                                       FontSize="9"
+                                                                       Foreground="{StaticResource AppleTextSecondary}"
+                                                                       HorizontalAlignment="Center"
+                                                                       Margin="0,0,0,2"/>
+														</Grid>
+													</Border>
+												</DataTemplate>
+											</ItemsControl.ItemTemplate>
+										</ItemsControl>
+
+										<Border Grid.Row="1"
+                                                BorderBrush="{StaticResource AppleSeparator}"
+                                                BorderThickness="0,1,0,0"
+                                                Margin="0,5,0,0"/>
+									</Grid>
+								</Border>
+							</StackPanel>
+						</Border>
+						<Border BorderBrush="{StaticResource AppleSeparator}"
+                                BorderThickness="0,0,0,1"
+                                Padding="0,0,0,20"
+                                Margin="0,0,0,20">
+							<StackPanel>
+								<TextBlock Text="Детальная статистика по методам"
+                                           FontSize="20"
+                                           FontWeight="SemiBold"
+                                           Margin="0,0,0,16"/>
+								<DataGrid x:Name="StatsDataGrid"
+                                          AutoGenerateColumns="False"
+                                          IsReadOnly="True"
+                                          Height="150">
+									<DataGrid.Columns>
+										<DataGridTextColumn Header="Метод" Binding="{Binding Method}" Width="*"/>
+										<DataGridTextColumn Header="Количество" Binding="{Binding Count}" Width="*"/>
+										<DataGridTextColumn Header="% от общего" Binding="{Binding PercentageDisplay}" Width="*"/>
+									</DataGrid.Columns>
+								</DataGrid>
+							</StackPanel>
+						</Border>
 						<StackPanel>
 							<Grid Margin="0,0,0,16">
 								<Grid.ColumnDefinitions>
@@ -654,8 +742,6 @@
 					</StackPanel>
 				</ScrollViewer>
 			</TabItem>
-
-			<!-- Вкладка Клиент -->
 			<TabItem Header="Клиент">
 				<ScrollViewer VerticalScrollBarVisibility="Auto">
 					<StackPanel>
@@ -670,7 +756,6 @@
                                            Margin="0,0,0,16"/>
 
 								<StackPanel>
-									<!-- URL -->
 									<TextBlock Text="URL"
                                                FontWeight="Medium"
                                                Margin="0,0,0,8"/>
@@ -678,8 +763,6 @@
                                              Text="http://localhost:8080/"
                                              Style="{StaticResource AppleTextBoxStyle}"
                                              Margin="0,0,0,16"/>
-
-									<!-- Метод -->
 									<Grid Margin="0,0,0,16">
 										<Grid.ColumnDefinitions>
 											<ColumnDefinition Width="Auto"/>
@@ -701,8 +784,6 @@
 											<ComboBoxItem Content="DELETE"/>
 										</ComboBox>
 									</Grid>
-
-									<!-- Тело запроса -->
 									<TextBlock Text="Тело запроса (JSON)"
                                                FontWeight="Medium"
                                                Margin="0,0,0,8"/>
@@ -713,8 +794,6 @@
                                              AcceptsReturn="True"
                                              Style="{StaticResource AppleTextBoxStyle}"
                                              Margin="0,0,0,16"/>
-
-									<!-- Быстрые примеры -->
 									<WrapPanel Margin="0,0,0,20">
 										<Button Content="/stats"
                                                 Style="{StaticResource AppleSecondaryButtonStyle}"
@@ -737,8 +816,6 @@
                                                 Click="ExampleDelete_Click"
                                                 Margin="0,0,8,8"/>
 									</WrapPanel>
-
-									<!-- Кнопка отправки -->
 									<Button x:Name="SendRequestButton"
                                             Content="Отправить запрос"
                                             Style="{StaticResource AppleButtonStyle}"
@@ -747,8 +824,6 @@
 								</StackPanel>
 							</StackPanel>
 						</Border>
-
-						<!-- Ответ -->
 						<StackPanel>
 							<TextBlock Text="Ответ сервера"
                                        FontSize="20"
@@ -776,8 +851,6 @@
 				</ScrollViewer>
 			</TabItem>
 		</TabControl>
-
-		<!-- Статусная строка -->
 		<StatusBar Grid.Row="2" Margin="0,16,0,0">
 			<StatusBarItem>
 				<TextBlock x:Name="StatusBarText" Text="Готов к работе"/>

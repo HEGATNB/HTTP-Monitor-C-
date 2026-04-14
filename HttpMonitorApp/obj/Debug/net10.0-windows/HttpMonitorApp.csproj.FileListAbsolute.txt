@@ -21,3 +21,4 @@ C:\Users\DELL\Desktop\projects\PKS_PROJ3\HttpMonitorApp\obj\Debug\net10.0-window
 C:\Users\DELL\Desktop\projects\PKS_PROJ3\HttpMonitorApp\obj\Debug\net10.0-windows\HttpMonitorApp.pdb
 C:\Users\DELL\Desktop\projects\PKS_PROJ3\HttpMonitorApp\obj\Debug\net10.0-windows\HttpMonitorApp.genruntimeconfig.cache
 C:\Users\DELL\Desktop\projects\PKS_PROJ3\HttpMonitorApp\obj\Debug\net10.0-windows\ref\HttpMonitorApp.dll
+C:\Users\DELL\Desktop\projects\PKS_PROJ3\HttpMonitorApp\obj\Debug\net10.0-windows\HttpMonitorApp.sourcelink.json

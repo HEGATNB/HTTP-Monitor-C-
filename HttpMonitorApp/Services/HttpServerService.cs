@@ -49,13 +49,12 @@ namespace HttpMonitor.Services
                 {
                     _listener.Prefixes.Add($"http://+:{port}/");
                 }
-                catch
-                {
-                }
+                catch { }
 
                 _listener.Start();
                 _cts = new CancellationTokenSource();
                 _serverStartTime = DateTime.Now;
+
                 _ = Task.Run(async () =>
                 {
                     while (_cts != null && !_cts.IsCancellationRequested)
@@ -67,8 +66,7 @@ namespace HttpMonitor.Services
                         }
                         catch (HttpListenerException ex)
                         {
-                            if (ex.ErrorCode == 995)
-                                break;
+                            if (ex.ErrorCode == 995) break;
                             LogToFile($"HttpListener error: {ex.Message}");
                         }
                         catch (ObjectDisposedException)
@@ -83,6 +81,8 @@ namespace HttpMonitor.Services
                 }, _cts.Token);
 
                 _ = Task.Run(MonitorLoadAsync);
+
+                LogToFile($"Server started on port {port}, monitoring started");
             }
             catch (HttpListenerException ex)
             {
@@ -410,17 +410,22 @@ namespace HttpMonitor.Services
         {
             while (_cts != null && !_cts.IsCancellationRequested)
             {
-                await Task.Delay(60000);
-                var minuteCount = _requestLogs.Count(x => x.Timestamp > DateTime.Now.AddMinutes(-1));
+                await Task.Delay(60000); 
+                var oneMinuteAgo = DateTime.Now.AddMinutes(-1);
+                var minuteCount = _requestLogs.Count(x => x.Timestamp >= oneMinuteAgo);
 
-                _loadPoints.Enqueue(new StatisticsViewModel.LoadPoint
+                var loadPoint = new StatisticsViewModel.LoadPoint
                 {
                     Time = DateTime.Now,
                     RequestCount = minuteCount
-                });
+                };
+
+                _loadPoints.Enqueue(loadPoint);
 
                 while (_loadPoints.Count > 60)
                     _loadPoints.TryDequeue(out _);
+
+                LogToFile($"Load point added: {loadPoint.Time:HH:mm:ss} - {minuteCount} requests/min");
 
                 StatisticsUpdated?.Invoke();
             }

@@ -3,6 +3,38 @@
   "WorkspaceRootPath": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\MainWindow.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MainWindow.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\HttpMonitorApp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HttpMonitorApp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\App.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:App.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\App.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:App.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\app.manifest||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app.manifest||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Services\\HttpServerService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Services\\HttpServerService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Models\\HttpRequestLog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\HttpRequestLog.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,40 +47,8 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Models\\StatisticsViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MainWindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\app.manifest||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:app.manifest||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\App.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:App.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:AssemblyInfo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\App.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:App.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Services\\HttpClientService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Services\\HttpClientService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Services\\HttpServerService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Services\\HttpServerService.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\MainWindow.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:MainWindow.xaml||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\HttpMonitorApp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:HttpMonitorApp.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\10.0.200-preview.0.26103.119\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.PackageDependencyResolution.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
@@ -66,14 +66,14 @@
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "AssemblyInfo.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\AssemblyInfo.cs",
-              "RelativeDocumentMoniker": "AssemblyInfo.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\AssemblyInfo.cs",
-              "RelativeToolTip": "AssemblyInfo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T06:53:02.753Z",
+              "Title": "app.manifest",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\app.manifest",
+              "RelativeDocumentMoniker": "app.manifest",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\app.manifest",
+              "RelativeToolTip": "app.manifest",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001203|",
+              "WhenOpened": "2026-04-11T06:50:40.088Z",
               "EditorCaption": ""
             },
             {
@@ -92,58 +92,84 @@
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "app.manifest",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\app.manifest",
-              "RelativeDocumentMoniker": "app.manifest",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\app.manifest",
-              "RelativeToolTip": "app.manifest",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAALAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001203|",
-              "WhenOpened": "2026-04-11T06:50:40.088Z",
+              "Title": "App.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\App.xaml.cs",
+              "RelativeDocumentMoniker": "App.xaml.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\App.xaml.cs",
+              "RelativeToolTip": "App.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T05:09:57.299Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "AssemblyInfo.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\AssemblyInfo.cs",
+              "RelativeDocumentMoniker": "AssemblyInfo.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\AssemblyInfo.cs",
+              "RelativeToolTip": "AssemblyInfo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T06:53:02.753Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HttpMonitorApp.csproj",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\HttpMonitorApp.csproj",
+              "RelativeDocumentMoniker": "HttpMonitorApp.csproj",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\HttpMonitorApp.csproj",
+              "RelativeToolTip": "HttpMonitorApp.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-04-11T05:09:47.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "MainWindow.xaml",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\MainWindow.xaml",
+              "RelativeToolTip": "MainWindow.xaml",
+              "ViewState": "AgIAAHMCAAAAAAAAAAAewIkCAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2026-04-11T05:09:12.689Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "MainWindow.xaml.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "MainWindow.xaml.cs",
               "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\MainWindow.xaml.cs",
               "RelativeToolTip": "MainWindow.xaml.cs",
-              "ViewState": "AgIAAN8AAAAAAAAAAAAAAAEBAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAABIAAAAAAAAAAAAEwB4AAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-11T05:10:35.269Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "StatisticsViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Models\\StatisticsViewModel.cs",
-              "RelativeDocumentMoniker": "Models\\StatisticsViewModel.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Models\\StatisticsViewModel.cs",
-              "RelativeToolTip": "Models\\StatisticsViewModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "DocumentIndex": 7,
+              "Title": "HttpServerService.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Services\\HttpServerService.cs",
+              "RelativeDocumentMoniker": "Services\\HttpServerService.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Services\\HttpServerService.cs",
+              "RelativeToolTip": "Services\\HttpServerService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAL4BAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T07:21:54.317Z",
+              "WhenOpened": "2026-04-11T05:22:04.273Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ServerMassage.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Models\\ServerMassage.cs",
-              "RelativeDocumentMoniker": "Models\\ServerMassage.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Models\\ServerMassage.cs",
-              "RelativeToolTip": "Models\\ServerMassage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T05:16:51.806Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 8,
               "Title": "HttpRequestLog.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Models\\HttpRequestLog.cs",
               "RelativeDocumentMoniker": "Models\\HttpRequestLog.cs",
@@ -156,20 +182,31 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "App.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\App.xaml.cs",
-              "RelativeDocumentMoniker": "App.xaml.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\App.xaml.cs",
-              "RelativeToolTip": "App.xaml.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 9,
+              "Title": "ServerMassage.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Models\\ServerMassage.cs",
+              "RelativeDocumentMoniker": "Models\\ServerMassage.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Models\\ServerMassage.cs",
+              "RelativeToolTip": "Models\\ServerMassage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T05:09:57.299Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-11T05:16:51.806Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 10,
+              "Title": "StatisticsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Models\\StatisticsViewModel.cs",
+              "RelativeDocumentMoniker": "Models\\StatisticsViewModel.cs",
+              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Models\\StatisticsViewModel.cs",
+              "RelativeToolTip": "Models\\StatisticsViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-11T07:21:54.317Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
               "Title": "HttpClientService.cs",
               "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Services\\HttpClientService.cs",
               "RelativeDocumentMoniker": "Services\\HttpClientService.cs",
@@ -177,45 +214,7 @@
               "RelativeToolTip": "Services\\HttpClientService.cs",
               "ViewState": "AgIAAFEAAAAAAAAAAAAAAFMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T07:15:08.154Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "HttpServerService.cs",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Services\\HttpServerService.cs",
-              "RelativeDocumentMoniker": "Services\\HttpServerService.cs",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\Services\\HttpServerService.cs",
-              "RelativeToolTip": "Services\\HttpServerService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-11T05:22:04.273Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\MainWindow.xaml",
-              "RelativeDocumentMoniker": "MainWindow.xaml",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\MainWindow.xaml",
-              "RelativeToolTip": "MainWindow.xaml",
-              "ViewState": "AgIAAAMDAAAAAAAAAAAewBIDAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2026-04-11T05:09:12.689Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "HttpMonitorApp.csproj",
-              "DocumentMoniker": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\HttpMonitorApp.csproj",
-              "RelativeDocumentMoniker": "HttpMonitorApp.csproj",
-              "ToolTip": "C:\\Users\\DELL\\Desktop\\projects\\PKS_PROJ3\\HttpMonitorApp\\HttpMonitorApp.csproj",
-              "RelativeToolTip": "HttpMonitorApp.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-04-11T05:09:47.519Z"
+              "WhenOpened": "2026-04-11T07:15:08.154Z"
             },
             {
               "$type": "Document",

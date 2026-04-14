@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows;
@@ -9,6 +10,9 @@ using System.Windows.Threading;
 using HttpMonitor.Services;
 using HttpMonitor.Models;
 using System.Windows.Shell;
+using Microsoft.Win32;
+using System.IO;
+using System.Text;
 
 namespace HttpMonitor
 {
@@ -25,6 +29,8 @@ namespace HttpMonitor
             InitializeServices();
             SetupUpdateTimer();
             StateChanged += MainWindow_StateChanged;
+            UpdateChart();
+            UpdateStatsTable();
         }
 
         private void MainWindow_StateChanged(object? sender, EventArgs e)
@@ -73,7 +79,12 @@ namespace HttpMonitor
 
             _serverService.StatisticsUpdated += () =>
             {
-                Dispatcher.Invoke(UpdateStatistics);
+                Dispatcher.Invoke(() =>
+                {
+                    UpdateStatistics();
+                    UpdateChart();
+                    UpdateStatsTable();
+                });
             };
         }
 
@@ -97,6 +108,9 @@ namespace HttpMonitor
                         _isServerRunning = true;
                         StartServerButton.Content = "Остановить";
                         AddLogEntry($"Сервер запущен на порту {port}");
+                        UpdateChart();
+                        UpdateStatsTable();
+
                     }
                     catch (Exception ex)
                     {
@@ -116,6 +130,8 @@ namespace HttpMonitor
                 _isServerRunning = false;
                 StartServerButton.Content = "Запустить";
                 AddLogEntry("Сервер остановлен");
+                
+                UpdateChart();
             }
         }
 
@@ -178,6 +194,80 @@ namespace HttpMonitor
             }
         }
 
+        private void UpdateChart()
+        {
+            if (_serverService != null && _isServerRunning)
+            {
+                var loadPoints = _serverService.GetLoadPoints().ToList();
+
+                if (!loadPoints.Any())
+                {
+                    var demoData = new List<object>();
+                    var now = DateTime.Now;
+                    for (int i = 0; i < 12; i++)
+                    {
+                        demoData.Add(new
+                        {
+                            Time = now.AddMinutes(-(11 - i)).ToString("HH:mm"),
+                            RequestCount = 0,
+                            Height = 2.0
+                        });
+                    }
+                    LoadChartItems.ItemsSource = demoData;
+                    return;
+                }
+
+                var recentPoints = loadPoints.TakeLast(12).ToList();
+
+                var maxLoad = recentPoints.Max(x => x.RequestCount);
+                if (maxLoad == 0) maxLoad = 1;
+
+                var chartData = recentPoints.Select(x => new
+                {
+                    Time = x.Time.ToString("HH:mm"),
+                    RequestCount = x.RequestCount,
+                    Height = Math.Max((x.RequestCount * 120.0) / maxLoad, 2.0)
+                }).ToList();
+
+                LoadChartItems.ItemsSource = chartData;
+            }
+            else
+            {
+                var demoData = new List<object>();
+                var now = DateTime.Now;
+                for (int i = 0; i < 12; i++)
+                {
+                    demoData.Add(new
+                    {
+                        Time = now.AddMinutes(-(11 - i)).ToString("HH:mm"),
+                        RequestCount = 0,
+                        Height = 2.0
+                    });
+                }
+                LoadChartItems.ItemsSource = demoData;
+            }
+        }
+
+        private void UpdateStatsTable()
+        {
+            if (_serverService != null)
+            {
+                var stats = _serverService.GetStatistics();
+                var total = stats.TotalRequests;
+
+                var tableData = new ObservableCollection<StatRow>
+                {
+                    new StatRow { Method = "GET", Count = stats.GetRequests, Percentage = total > 0 ? (double)stats.GetRequests / total * 100 : 0 },
+                    new StatRow { Method = "POST", Count = stats.PostRequests, Percentage = total > 0 ? (double)stats.PostRequests / total * 100 : 0 },
+                    new StatRow { Method = "PUT", Count = stats.PutRequests, Percentage = total > 0 ? (double)stats.PutRequests / total * 100 : 0 },
+                    new StatRow { Method = "DELETE", Count = stats.DeleteRequests, Percentage = total > 0 ? (double)stats.DeleteRequests / total * 100 : 0 }
+                };
+
+                StatsDataGrid.ItemsSource = null;
+                StatsDataGrid.ItemsSource = tableData;
+            }
+        }
+
         private void UpdateUptime()
         {
             if (_isServerRunning && _serverService != null)
@@ -205,6 +295,42 @@ namespace HttpMonitor
         private void ClearLogsButton_Click(object sender, RoutedEventArgs e)
         {
             LogListBox?.Items.Clear();
+        }
+
+        private void ExportLogsButton_Click(object sender, RoutedEventArgs e)
+        {
+            var dialog = new SaveFileDialog
+            {
+                Filter = "CSV files (*.csv)|*.csv|Text files (*.txt)|*.txt|All files (*.*)|*.*",
+                DefaultExt = "csv",
+                FileName = $"http_monitor_logs_{DateTime.Now:yyyyMMdd_HHmmss}"
+            };
+
+            if (dialog.ShowDialog() == true)
+            {
+                try
+                {
+                    var logs = _serverService?.GetLogs() ?? new List<HttpRequestLog>();
+                    var sb = new StringBuilder();
+
+                    sb.AppendLine("Timestamp,Method,URL,ResponseStatus,ProcessingTimeMs");
+
+                    foreach (var log in logs)
+                    {
+                        sb.AppendLine($"{log.Timestamp:yyyy-MM-dd HH:mm:ss},{log.Method},{log.Url},{log.ResponseStatus},{log.ProcessingTimeMs}");
+                    }
+
+                    File.WriteAllText(dialog.FileName, sb.ToString(), Encoding.UTF8);
+
+                    MessageBox.Show($"Логи успешно экспортированы в:\n{dialog.FileName}",
+                        "Экспорт завершен", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Ошибка экспорта: {ex.Message}", "Ошибка",
+                        MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
         }
 
         private void ExampleStats_Click(object sender, RoutedEventArgs e)
@@ -268,5 +394,13 @@ namespace HttpMonitor
         {
             Close();
         }
+    }
+
+    public class StatRow
+    {
+        public string Method { get; set; } = string.Empty;
+        public int Count { get; set; }
+        public double Percentage { get; set; }
+        public string PercentageDisplay => $"{Percentage:F1}%";
     }
 }
